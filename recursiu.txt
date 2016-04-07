@@ -1,0 +1,35 @@
+def main ():
+
+	import sys
+	inFile = sys.argv[1] #Arxiu entrada				C1 (1)
+	f = open(inFile,'r') #Obro arxiu				C2 (1)
+	hangar = []							C3 (1)			
+	for line in f:							C4 (N+1)
+		splited = line.split( )					C5 (N)
+		hangar.append(splited[1])				C6 (N)
+	f.close() #Tanco arxiu						C7 (1)
+
+	llista = map(int, hangar) #Passa a una llista d'integers	C8 (N)
+	llista.sort() #Ordena la llista					C9 (NLOGN)
+	posicio = 0							C10(1)
+	posicio = obtindre(llista,posicio)				C11(N)
+	print "Solution: " + str(posicio)				C12(1) 		
+
+def obtindre(llista,posicio):
+
+		if(llista[0]==posicio):					C13(1)
+			return obtindre(llista[1:],posicio+1)		C14(1)
+		else: 
+			return posicio					C15(1)
+
+if __name__ == "__main__":
+	main();
+
+#Practica1 Forma Recursiva_Final
+
+C =  C1  +  C2  +  C3  +  C4  +  C5  +  C6  +  C7  +  C8  +  C9  +  C10  +  C11  +  C12  +  C13  +  C14  +  C15  = NLOGN + 4N + 11 = NLOGN
+     (1)    (1)    (1)   (N+1)   (N)    (N)    (1)    (N)  (NLOGN)    (1)     (1)     (1)     (1)     (1)     (1)
+
+C = NLOGN ,  JA QUE: NLOGN > 4N > 11
+
+EN TOTAL TENIM QUE FAREM O(N * LOG N) OPERACIONS.
