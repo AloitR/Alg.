@@ -11,8 +11,12 @@ def tractament_parametres():
 		print "Llegint d'entrada standard."
 		llegir_entrada_standard()
 	else:
-		llegir_fitxer()
-		buscar_lloc()
+		try:
+			llegir_fitxer()
+			buscar_lloc()
+		except IOError:
+			print "No s'ha pogut trobar el fitxer especificat."
+
 
 def llegir_entrada_standard():
 	print #TODO
