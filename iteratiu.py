@@ -8,21 +8,36 @@ def main ():
 def tractament_parametres():
 	if(len(sys.argv) != 2):
 		print "[Info] Us: python iteratiu.py [fitxer-arribades]"
-		print "Llegint d'entrada standard."
 		llegir_entrada_standard()
+		parametres = False
+		llegir_fitxer(parametres)
+		buscar_lloc()
 	else:
 		try:
-			llegir_fitxer()
+			parametres = True
+			llegir_fitxer(parametres)
 			buscar_lloc()
 		except IOError:
-			print "No s'ha pogut trobar el fitxer especificat."
+			print "[Error] No s'ha pogut trobar el fitxer especificat."
 
 
 def llegir_entrada_standard():
-	print #TODO
+	new_hangar = open("landings.txt", 'w')
+	print "[Info] Introdueix una llista amb format: 'nom-nau' 'posicio-hangar'"
+	print "[Info] Per acabar, prem [Enter] en una linea en blanc."
+	acabat = False
+	while (acabat != True):
+		llista = raw_input()
+		if(llista == ""):
+			acabat = True
+		else:
+			new_hangar.write(llista + "\n")
 
-def llegir_fitxer():
-	fitxer = sys.argv[1]
+def llegir_fitxer(parametres):
+	if(parametres == True):
+		fitxer = sys.argv[1]
+	else:
+		fitxer = 'landings.txt'
 	hangar = open(fitxer,'r')
 	for linea in hangar:
 		splited = linea.split( )
