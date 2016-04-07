@@ -1,5 +1,7 @@
 import sys
 
+places_ocupades = []
+
 def main ():
 	tractament_parametres()
 
@@ -10,6 +12,7 @@ def tractament_parametres():
 		llegir_entrada_standard()
 	else:
 		llegir_fitxer()
+		buscar_lloc()
 
 def llegir_entrada_standard():
 	print #TODO
@@ -17,11 +20,21 @@ def llegir_entrada_standard():
 def llegir_fitxer():
 	fitxer = sys.argv[1]
 	hangar = open(fitxer,'r')
-	for line in hangar:
-		splited = line.split()
-		print splited
-		#hangar.append(splited[1])
+	for linea in hangar:
+		splited = linea.split( )
+ 		places_ocupades.append(splited[1])
 	hangar.close()
+
+def buscar_lloc():
+	places_ocupades_int = map(int, places_ocupades)
+	places_ocupades_asc quicksort(places_ocupades_int)
+
+def quicksort(llista_places):
+	if llista_places == []: return []
+	return quicksort([x for x in llista_places[1:] if x< llista_places[0]]) + llista_places[0:1] + \
+		quicksort([x for x in llista_places[1:] if x>=llista_places[0]])
+
+
 
 if __name__ == "__main__":
 	main();
