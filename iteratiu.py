@@ -9,13 +9,19 @@ def tractament_parametres():
 		print "Llegint d'entrada standard."
 		llegir_entrada_standard()
 	else:
-		escriure_sortida_standard()
+		llegir_fitxer()
 
 def llegir_entrada_standard():
 	print #TODO
 
-def escriure_sortida_standard():
-	print #TODO
+def llegir_fitxer():
+	fitxer = sys.argv[1]
+	hangar = open(fitxer,'r')
+	for line in hangar:
+		splited = line.split()
+		print splited
+		#hangar.append(splited[1])
+	hangar.close()
 
 if __name__ == "__main__":
 	main();
