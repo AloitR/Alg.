@@ -27,7 +27,18 @@ def llegir_fitxer():
 
 def buscar_lloc():
 	places_ocupades_int = map(int, places_ocupades)
-	places_ocupades_asc quicksort(places_ocupades_int)
+	places_ocupades_asc = quicksort(places_ocupades_int)
+	print places_ocupades_asc
+
+	posicio = 0
+	trobat = False
+
+	while(posicio<len(places_ocupades_asc) and trobat == False):
+ 		if(posicio == places_ocupades_asc[posicio]): posicio = posicio + 1
+ 		else: trobat = True
+
+ 	print "Solution: " + str(posicio)
+
 
 def quicksort(llista_places):
 	if llista_places == []: return []
