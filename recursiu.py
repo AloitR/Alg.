@@ -1,29 +1,30 @@
+import sys
+
 def main ():
+	tractament_parametres()
 
-	import sys
-	inFile = sys.argv[1] #Arxiu entrada
-	f = open(inFile,'r') #Obro arxiu
-	hangar = []
-	for line in f:
-		splited = line.split( )
-		hangar.append(splited[1])
-	f.close() #Tanco arxiu
+def tractament_parametres():
+	if(len(sys.argv) != 2): # En cas de no haber parametres d'entrada
+		print "[Info] Us: python iteratiu.py [fitxer-arribades]"
+		llegir_entrada_standard()
+		parametres = False
+		llegir_fitxer(parametres)
+		buscar_lloc()
+	else: #En cas d'haber parametres d'entrada
+		try:
+			parametres = True
+			llegir_fitxer(parametres)
+			buscar_lloc()
+		except IOError:
+			print "[Error] No s'ha pogut trobar el fitxer especificat."
+			# Tractament d'error en cas de fitxer inexistent.
 
-	llista = map(int, hangar) #Passa a una llista d'integers
-	llista.sort() #Ordena la llista
-	#print llista
-	posicio = 0
-	posicio = obtindre(llista,posicio)
-	print "Solution: " + str(posicio) 		
-
-def obtindre(llista,posicio):
-
-		if(llista[0]==posicio):
-			return obtindre(llista[1:],posicio+1)
-		else: 
-			return posicio
+def llegir_entrada_standard():
+	print # TODO
+def llegir_fitxer(parametres):
+	print # TODO
+def buscar_lloc():
+	print # TODO
 
 if __name__ == "__main__":
 	main();
-
-#Practica1 Forma Recursiva_Final
