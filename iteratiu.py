@@ -8,10 +8,13 @@ def main ():
 def tractament_parametres():
 	if(len(sys.argv) != 2): # En cas de no haber parametres d'entrada
 		print "[Info] Us: python iteratiu.py [fitxer-arribades]"
-		llegir_entrada_standard()
-		parametres = False
-		llegir_fitxer(parametres)
-		buscar_lloc()
+		try:
+			llegir_entrada_standard()
+			parametres = False
+			llegir_fitxer(parametres)
+			buscar_lloc()
+		except IndexError:
+			print "[Error] Format de dades incorrecte."
 	else: #En cas d'haber parametres d'entrada
 		try:
 			parametres = True
