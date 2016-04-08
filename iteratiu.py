@@ -57,7 +57,7 @@ def buscar_lloc():
  		if(posicio == places_ocupades_asc[posicio]): posicio = posicio + 1
  		else: trobat = True
 
- 	print "Solution: " + str(posicio)
+ 	print "Solució: " + str(posicio)
 
 # Funció recursiva Quicksort per tal de no usar .sort()
 def quicksort(llista_places):
