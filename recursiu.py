@@ -8,10 +8,13 @@ def main ():
 def tractament_parametres():
 	if(len(sys.argv) != 2): # En cas de no haber parametres d'entrada
 		print "[Info] Us: python iteratiu.py [fitxer-arribades]"
-		llegir_entrada_standard()
-		parametres = False
-		llegir_fitxer(parametres)
-		buscar_lloc()
+		try:
+			llegir_entrada_standard()
+			parametres = False
+			llegir_fitxer(parametres)
+			buscar_lloc()
+		except IndexError:
+			print "[Error] Format de dades incorrecte."
 	else: #En cas d'haber parametres d'entrada
 		try:
 			parametres = True
@@ -53,9 +56,14 @@ def buscar_lloc():
 
 def crida_recursiva(places_ocupades_asc, posicio):
 	if(places_ocupades_asc[0]==posicio):
+		# Si el contingut del primer element coincideix amb la posicio que li pertoca
 		return crida_recursiva(places_ocupades_asc[1:],posicio+1)
+		# Crida recursiva amb el seguent valor i seguent posicio
+		# ( El seguent valor l'obtenim 'retallant' el primer element)
 	else:
 		return posicio
+		# Cas base, l'element no coincideix amb la posicio que li pertoca,
+		# retornem la posicio, que sera el primer lloc buit en l'hangar.
 
 def ordenar(places_ocupades_int):
 	places_ocupades_int = map(int, places_ocupades) # ["1"] -> [1]
