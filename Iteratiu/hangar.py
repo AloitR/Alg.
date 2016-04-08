@@ -51,24 +51,19 @@ def buscar_lloc():
 	places_ocupades_asc = ordenar(places_ocupades) # Funcio per ordenar la llista
 
 	posicio = 0
-	posicio = crida_recursiva(places_ocupades_asc,posicio)
-	print "Solucio: " + str(posicio)
+	trobat = False
 
-def crida_recursiva(places_ocupades_asc, posicio):
-	if(places_ocupades_asc[0]==posicio):
-		# Si el contingut del primer element coincideix amb la posicio que li pertoca
-		return crida_recursiva(places_ocupades_asc[1:],posicio+1)
-		# Crida recursiva amb el seguent valor i seguent posicio
-		# ( El seguent valor l'obtenim 'retallant' el primer element)
-	else:
-		return posicio
-		# Cas base, l'element no coincideix amb la posicio que li pertoca,
-		# retornem la posicio, que sera el primer lloc buit en l'hangar.
+	#Anar recorrent mentres pos i contingut coincideixin
+	while(posicio<len(places_ocupades_asc) and trobat == False):
+ 		if(posicio == places_ocupades_asc[posicio]): posicio = posicio + 1
+ 		else: trobat = True
 
-def ordenar(places_ocupades_int):
+ 	print "Solution: " + str(posicio)
+
+def ordenar(places_ocupades):
 	places_ocupades_int = map(int, places_ocupades) # ["1"] -> [1]
 	places_ocupades_asc = quicksort(places_ocupades_int) # Ordenar amb Quicksort
-	print places_ocupades_asc
+	#print places_ocupades_asc
 	return places_ocupades_asc
 
 # Funcio recursiva Quicksort per tal de no usar .sort()
@@ -76,8 +71,6 @@ def quicksort(llista_places):
 	if llista_places == []: return []
 	return quicksort([x for x in llista_places[1:] if x< llista_places[0]]) + llista_places[0:1] + \
 		quicksort([x for x in llista_places[1:] if x>=llista_places[0]])
-
-
 
 if __name__ == "__main__":
 	main();

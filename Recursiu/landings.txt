@@ -1,0 +1,10 @@
+V-Wing 3
+B-Wing 4
+V-Wing 8
+A-Wing 2
+X-Wing 15
+V-Wing 18
+E-Wing 10
+B-Wing 6
+A-Wing 19
+A-Wing 17

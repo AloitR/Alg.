@@ -1,0 +1,8 @@
+test: 
+	for i in `seq 10 10 100`;\
+	do \
+	   python wing-generator.py $$i > landings.txt 2> sol1.txt; \
+	   python hangar.py landings.txt > sol2.txt; \
+	   if `diff sol1.txt sol2.txt`; then echo OK; else echo KO; fi; \
+	done
+

@@ -1,4 +1,0 @@
-Nau1 0 
-Nau2 1
-Nau3 5
-Nau9 2
