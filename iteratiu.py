@@ -34,7 +34,7 @@ def llegir_entrada_standard():
 			new_hangar.write(llista + "\n")
 
 def llegir_fitxer(parametres):
-	if(parametres == True): # En cas d'haber parametre d'entrada usará aquest.
+	if(parametres == True): # En cas d'haber parametre d'entrada usara aquest.
 		fitxer = sys.argv[1]
 	else:					# En cas contrari en creeem un i l'utilitzem.
 		fitxer = 'landings.txt'
@@ -45,9 +45,7 @@ def llegir_fitxer(parametres):
 	hangar.close()
 
 def buscar_lloc():
-	places_ocupades_int = map(int, places_ocupades) # ["1"] -> [1]
-	places_ocupades_asc = quicksort(places_ocupades_int) # Ordenar amb Quicksort
-	print places_ocupades_asc
+	places_ocupades_asc = ordenar(places_ocupades) # Funcio per ordenar la llista
 
 	posicio = 0
 	trobat = False
@@ -57,9 +55,15 @@ def buscar_lloc():
  		if(posicio == places_ocupades_asc[posicio]): posicio = posicio + 1
  		else: trobat = True
 
- 	print "Solució: " + str(posicio)
+ 	print "Solucio: " + str(posicio)
 
-# Funció recursiva Quicksort per tal de no usar .sort()
+def ordenar(places_ocupades):
+	places_ocupades_int = map(int, places_ocupades) # ["1"] -> [1]
+	places_ocupades_asc = quicksort(places_ocupades_int) # Ordenar amb Quicksort
+	print places_ocupades_asc
+	return places_ocupades_asc
+
+# Funcio recursiva Quicksort per tal de no usar .sort()
 def quicksort(llista_places):
 	if llista_places == []: return []
 	return quicksort([x for x in llista_places[1:] if x< llista_places[0]]) + llista_places[0:1] + \
